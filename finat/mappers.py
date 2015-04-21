@@ -55,6 +55,15 @@ class _IndexMapper(IdentityMapper):
         except KeyError:
             return expr
 
+    def map_recipe(self, expr, *args, **kwargs):
+        indices = self.rec(expr.indices, *args, **kwargs)
+        indices = tuple(tuple(i for i in ii if isinstance(i, IndexBase))
+                        for ii in indices)
+
+        return expr.__class__(indices,
+                              self.rec(expr.body, *args, **kwargs),
+                              expr._transpose)
+
 
 class _StringifyMapper(StringifyMapper):
 
