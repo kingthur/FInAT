@@ -1,0 +1,2 @@
+git+https://github.com/kingthur/fiat.git#egg=fiat
+git+https://github.com/kingthur/tsfc.git#tsfc=fiat
